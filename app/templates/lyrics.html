@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<span id="typed"></span>
+
+<script>
+
+// concatenate string with breaks
+	var lyrics = {{ lyrics|tojson }};
+	var lyrics_with_breaks = "";
+	for (line in lyrics) {
+		lyrics_with_breaks = lyrics_with_breaks.concat(lyrics[line] + "<br>");
+	}
+
+    var typed = new Typed('#typed', {
+      strings: [lyrics_with_breaks],
+      typeSpeed: 5,
+      smartBackspace: true,
+      cursorChar: "",
+  });
+
+
+
+var colors = ['#39CCCC', '#0074D9', '#F012BE', '#B10DC9'];
+var random_color = colors[Math.floor(Math.random() * colors.length)];
+document.getElementById('typed').style.color = random_color;
+
+</script> 
+
+
+
+{% endblock %} 
